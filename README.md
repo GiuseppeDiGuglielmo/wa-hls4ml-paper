@@ -75,4 +75,16 @@ The original code used to train the model is copyright the original authors [Jas
 
 Some figures in the [`figures`](figures/) are copyright [Jason Weitz](https://orcid.org/0009-0004-6315-3562) and [Dmitri Demler](https://orcid.org/0009-0009-9453-9755) of [University of California San Diego](https://ucsd.edu/) (The figures representing the surrogate model architectures, Fig. 5 and Fig 6.). The remaining figure (The figure representing the proposed codesign workflow using wa-hls4ml, Fig. 1) is authored by [Ben Hawks](https://orcid.org/0000-0001-5700-0288) and copyright [Fermilab](https://fnal.gov), and all figures included in the directory are licensed under Creative Commons Attribution-NonCommercial 4.0 International.
 
+## Contact
 
+This README.md was authored by [Ben Hawks](https://orcid.org/0000-0001-5700-0288) and copyright [Fermilab](https://fnal.gov). The Repository (not including submodules) is licensed under the Creative Commons Attribution-NonCommercial 4.0 International license.
+
+If you would like to reach out with questions about the project, paper, code, or any potential collaboration or extension regarding this work, please reach out to any of the following people. 
+
+[Benjamin Hawks](https://orcid.org/0000-0001-5700-0288), Fermi National Accelerator Laboratory, USA - [bhawks@fnal.gov](mailto:bhawks@fnal.gov)
+
+[Audrey Corbeil Therrien](https://orcid.org/0000-0001-6698-8400) - University of Sherbrooke, Canada - [audrey.corbeil.therrien@usherbrooke.ca](mailto:audrey.corbeil.therrien@usherbrooke.ca)
+
+[Hamza Ezzaoui Rahali](https://orcid.org/0000-0002-0352-725X), University of Sherbrooke, Canada - [hamza.ezzaoui.rahali@usherbrooke.ca](mailto:hamza.ezzaoui.rahali@usherbrooke.ca)
+
+[Mohammad Mehdi Rahimifar](https://orcid.org/0000-0002-6582-8322), University of Sherbrooke, Canada - [mohammad.mehdi.rahimifar@usherbrooke.ca](mailto:mohammad.mehdi.rahimifar@usherbrooke.ca)
