@@ -1,0 +1,6 @@
+[submodule "wa_hls4ml_models"]
+	path = wa_hls4ml_models
+	url = https://github.com/jdweitz/wa_hls4ml_models.git
+[submodule "wa-hls4ml-search"]
+	path = wa-hls4ml-search
+	url = https://github.com/ben-hawks/wa-hls4ml-search
