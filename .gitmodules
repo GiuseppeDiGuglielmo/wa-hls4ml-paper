@@ -4,3 +4,7 @@
 [submodule "wa-hls4ml-search"]
 	path = wa-hls4ml-search
 	url = https://github.com/ben-hawks/wa-hls4ml-search
+[submodule "rule4ml"]
+	path = rule4ml
+	url = https://github.com/IMPETUS-UdeS/rule4ml.git
+	branch = trets
