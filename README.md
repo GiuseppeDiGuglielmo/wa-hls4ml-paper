@@ -13,7 +13,7 @@ git submodule update --init --recursive
 
 ## Surrogate Models & Training
 
-The code used to train and evaluate the GNN and Transformer surrogate models as described in the paper are available in the `wa_hls4ml_models` directory. Please see [the README file](wa_hls4ml_models/README.md) in `wa_hls4ml_models` directory for more details on how to setup and train the models.
+The code used to train and evaluate the GNN and Transformer surrogate models as described in the paper are available in the `wa-hls4ml-models` directory. Please see [the README file](wa-hls4ml-models/README.md) in `wa-hls4ml-models` directory for more details on how to setup and train the models.
 
 The code used to train and evaluate the baseline MLP as described in the paper can be found in the [`rule4ml/notebooks/benchmark.ipynb`](rule4ml/notebooks/benchmark.ipynb) and [`rule4ml/notebooks/train.ipynb`](rule4ml/notebooks/train.ipynb) notebooks.
 
@@ -36,13 +36,13 @@ The datasets that were generated using the code in the `wa-hls4ml-search` direct
 
 The code used to generate the plots from the paper are in a few different places.
 
-* Results for the GNN and Transformer based surrogate models are available in the `wa_hls4ml_models` directory
-  * The results plots for the GNN (Fig. 9 and Fig. 10 in the paper) are available in the [`wa_hls4ml_models/GNN/utils/plot.py`](wa_hls4ml_models/GNN/utils/plot.py) code, which has helper functions in the [`wa_hls4ml_models/GNN/utils/Utils.py`](wa_hls4ml_models/GNN/utils/Utils.py) script.
-  * The results plots for the Transformer (Fig. 11 and Fig. 12 in the paper) are available in the [`wa_hls4ml_models/transformer/plot.py`](wa_hls4ml_models/transformer/plot.py) script, which is used at training time to generate the plots via the [`wa_hls4ml_models/transformer/run.py`](wa_hls4ml_models/transformer/run.py) script.
+* Results for the GNN and Transformer based surrogate models are available in the `wa-hls4ml-models` directory
+  * The results plots for the GNN (Fig. 9 and Fig. 10 in the paper) are available in the [`wa-hls4ml-models/GNN/utils/plot.py`](wa-hls4ml-models/GNN/utils/plot.py) code, which has helper functions in the [`wa-hls4ml-models/GNN/utils/Utils.py`](wa-hls4ml-models/GNN/utils/Utils.py) script.
+  * The results plots for the Transformer (Fig. 11 and Fig. 12 in the paper) are available in the [`wa-hls4ml-models/transformer/plot.py`](wa-hls4ml-models/transformer/plot.py) script, which is used at training time to generate the plots via the [`wa-hls4ml-models/transformer/run.py`](wa-hls4ml-models/transformer/run.py) script.
   * The code used to generate the results plots for the Baseline MLP (Fig. 7 and Fig. 8 in the paper) is available in the [`rule4ml/notebooks/benchmark.ipynb`](rule4ml/notebooks/benchmark.ipynb) notebook.  
 * The used to generate the plots showing the dataset distribution (Fig. 2 and Fig. 3 in the paper) are available in the [`wa-hls4ml-search/plots/generate_plots.ipynb`](wa-hls4ml-search/plots/generate_plots.ipynb) notebook. Be warned that the notebook loads and processes a large dataset, so generating the plots in this notebook take a while to run. Additionally, if you output the plots as PDFs, they are very large, so it is recommended to output them as PNGs instead.
-* The code used to generate the plots comparing the GNN and transformer predictions to the actual values (Fig. 13 through Fig. 18) is in [`wa_hls4ml_models/GNN/utils/plot.py`](wa_hls4ml_models/GNN/utils/plot.py) and [`wa_hls4ml_models/transformer/plot.py`](wa_hls4ml_models/transformer/plot.py).
-* The code used to generate the plot showing the distribution of labels within the train, validation, test, and exemplar datasets (Fig. 4) is available in the [`wa_hls4ml_models/notebooks/exemplar_dataset_visualization.ipynb`](wa_hls4ml_models/notebooks/exemplar_dataset_visualization.ipynb) notebook. 
+* The code used to generate the plots comparing the GNN and transformer predictions to the actual values (Fig. 13 through Fig. 18) is in [`wa-hls4ml-models/GNN/utils/plot.py`](wa-hls4ml-models/GNN/utils/plot.py) and [`wa-hls4ml-models/transformer/plot.py`](wa-hls4ml-models/transformer/plot.py).
+* The code used to generate the plot showing the distribution of labels within the train, validation, test, and exemplar datasets (Fig. 4) is available in the [`wa-hls4ml-models/notebooks/exemplar_dataset_visualization.ipynb`](wa-hls4ml-models/notebooks/exemplar_dataset_visualization.ipynb) notebook. 
 * Figures 1, 5, and 6 were generated in either Google Slides or Keynote, the files for which are included in [figures](figures/) as .pptx, .svg, and .key files as they are available (some were automatically converted, so there may be slight inaccuracies comapred to the figures in the paper), as well as the generated .pdf files used in the paper.
 
 ## Using the surrogate models
