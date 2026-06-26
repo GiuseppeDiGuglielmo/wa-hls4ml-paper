@@ -6,7 +6,3 @@
 	path = wa-hls4ml-search
 	url = git@github.com:GiuseppeDiGuglielmo/wa-hls4ml-search.git
 	branch = Catapult-ASIC-dev
-[submodule "rule4ml"]
-	path = rule4ml
-	url = https://github.com/IMPETUS-UdeS/rule4ml.git
-	branch = trets
