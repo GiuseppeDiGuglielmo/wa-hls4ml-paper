@@ -1,6 +1,6 @@
 [submodule "wa-hls4ml-models"]
 	path = wa-hls4ml-models
-	url = https://github.com/ArghyaRanjanDas/wa_hls4ml_models.git
+	url = git@github.com:ArghyaRanjanDas/wa_hls4ml_models.git
 	branch = Catapult-ASIC-dev
 [submodule "wa-hls4ml-search"]
 	path = wa-hls4ml-search
