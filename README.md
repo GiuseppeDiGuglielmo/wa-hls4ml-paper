@@ -1,119 +1,55 @@
-# wa-hls4ml-paper
-Code for plots, models, data generation and other utilities relating to the paper "wa-hls4ml: A Benchmark and Surrogate Models for hls4ml Resource and Latency Estimation"
+# wa-hls4ml-paper — ASIC Surrogate Models (Catapult-ASIC-dev)
 
-> **Branch `Catapult-ASIC-dev`** extends the original FPGA/Vivado work to ASIC
-> technology nodes (Nangate 45 nm and GlobalFoundries 22FDX FD-SOI) using
-> Siemens Catapult HLS. See the ASIC-specific sections below.
+This branch extends the [wa-hls4ml](https://arxiv.org/abs/2511.05615) work to
+ASIC technology nodes (Nangate 45 nm and GlobalFoundries 22FDX FD-SOI) using
+Siemens Catapult HLS. It contains two submodules:
 
-## ASIC Surrogate Models (Catapult-ASIC-dev)
-
-Transformer and GNN surrogate models for ASIC synthesis latency and area
-estimation, trained on ~527K hls4ml/Catapult HLS designs. Code is in
-`wa-hls4ml-models/` (submodule →
-[ArghyaRanjanDas/wa_hls4ml_models](https://github.com/ArghyaRanjanDas/wa_hls4ml_models),
-branch `Catapult-ASIC-dev`).
-
-**Model card**: [`wa-hls4ml-models/model-cards/model-card_wa-hls4ml-asic-surrogate.md`](wa-hls4ml-models/model-cards/model-card_wa-hls4ml-asic-surrogate.md)
-
-## ASIC Synthesis Dataset (Catapult-ASIC-dev)
-
-~527K Siemens Catapult HLS synthesis results on Nangate 45 nm and GF22FDX.
-Dataset generation scripts are in `wa-hls4ml-search/` (submodule →
-[GiuseppeDiGuglielmo/wa-hls4ml-search](https://github.com/GiuseppeDiGuglielmo/wa-hls4ml-search),
-branch `Catapult-ASIC-dev`). Data is hosted on NERSC CFS
-(`/global/cfs/cdirs/amsc011/shared/wa-hls4ml-catapult/`); access is
-restricted pending formal release.
-
-**Dataset card**: [`wa-hls4ml-search/data-cards/genesis_datacard_wa_hls4ml_asic.yaml`](wa-hls4ml-search/data-cards/genesis_datacard_wa_hls4ml_asic.yaml)
-
----
-
-## Using this repo
-
-This repo uses git submodules. To use this repo, you need to initialize and update the submodules using the following command in the root of the repository after cloning it:
-
-Note that some of the submodules are large (>1GB)
+## Submodules
 
 ```bash
+git clone --recurse-submodules https://github.com/fastmachinelearning/wa-hls4ml-paper.git
+cd wa-hls4ml-paper
+git checkout Catapult-ASIC-dev
 git submodule update --init --recursive
 ```
 
-## Surrogate Models & Training
+### wa-hls4ml-models — Surrogate Models
 
-The code used to train and evaluate the GNN and Transformer surrogate models as described in the paper are available in the `wa-hls4ml-models` directory. Please see [the README file](wa-hls4ml-models/README.md) in `wa-hls4ml-models` directory for more details on how to setup and train the models.
+Transformer and GNN surrogate models predicting ASIC synthesis latency and area
+for hls4ml-generated quantized dense neural network accelerators.
 
-The code used to train and evaluate the baseline MLP as described in the paper can be found in the [`rule4ml/notebooks/benchmark.ipynb`](rule4ml/notebooks/benchmark.ipynb) and [`rule4ml/notebooks/train.ipynb`](rule4ml/notebooks/train.ipynb) notebooks.
+- **Repository**: [ArghyaRanjanDas/wa_hls4ml_models](https://github.com/ArghyaRanjanDas/wa_hls4ml_models) (branch `Catapult-ASIC-dev`)
+- **Model card**: [`wa-hls4ml-models/model-cards/model-card_wa-hls4ml-asic-surrogate.md`](wa-hls4ml-models/model-cards/model-card_wa-hls4ml-asic-surrogate.md)
+- **README**: [`wa-hls4ml-models/README.md`](wa-hls4ml-models/README.md)
 
-## Dataset Generation 
+### wa-hls4ml-search — Dataset Generation
 
-The code used to generate dataset is available in the `wa-hls4ml-search` directory. Please see [the README file](wa-hls4ml-search/README.md) in `wa-hls4ml-search` directory for more details on how to generate the dataset.
+Scripts and orchestration for generating the wa-hls4ml ASIC Synthesis Dataset
+(~527K Siemens Catapult HLS designs on Nangate 45 nm and GF22FDX).
 
-# Training, Validation, Test, and Exemplar Test Datsets
-
-The datasets that were generated using the code in the `wa-hls4ml-search` directory are available on either Huggingface or the American Science Cloud's Fermi Data Platform. For more details on the datasets themselves, please see the Dataset cards included with each dataset (the README.md in the root of the dataset directories)
-
-* Results Dataset (containing inputs and outputs used to train and evaluate both surrogate models)
-  * [HuggingFace](https://huggingface.co/datasets/fastmachinelearning/wa-hls4ml)
-  * [Fermi Data Platform](https://amsc.fnal.gov:2880/amsc/axess/wa-hls4ml/)
-* Projects Dataset (containing the full AMD Vitis/Vivado projects for each sample in the Results Dataset. See the .csv files in the root of the dataset directory for mappings from each sample in the results dataset to the location of the corresponding project tarball)
-  * [HuggingFace](https://huggingface.co/datasets/fastmachinelearning/wa-hls4ml-projects)
-  * [Fermi Data Platform](https://amsc.fnal.gov:2880/amsc/axess/wa-hls4ml-projects/)
-
-## Plots & Analysis
-
-The code used to generate the plots from the paper are in a few different places.
-
-* Results for the GNN and Transformer based surrogate models are available in the `wa-hls4ml-models` directory
-  * The results plots for the GNN (Fig. 9 and Fig. 10 in the paper) are available in the [`wa-hls4ml-models/GNN/utils/plot.py`](wa-hls4ml-models/GNN/utils/plot.py) code, which has helper functions in the [`wa-hls4ml-models/GNN/utils/Utils.py`](wa-hls4ml-models/GNN/utils/Utils.py) script.
-  * The results plots for the Transformer (Fig. 11 and Fig. 12 in the paper) are available in the [`wa-hls4ml-models/transformer/plot.py`](wa-hls4ml-models/transformer/plot.py) script, which is used at training time to generate the plots via the [`wa-hls4ml-models/transformer/run.py`](wa-hls4ml-models/transformer/run.py) script.
-  * The code used to generate the results plots for the Baseline MLP (Fig. 7 and Fig. 8 in the paper) is available in the [`rule4ml/notebooks/benchmark.ipynb`](rule4ml/notebooks/benchmark.ipynb) notebook.  
-* The used to generate the plots showing the dataset distribution (Fig. 2 and Fig. 3 in the paper) are available in the [`wa-hls4ml-search/plots/generate_plots.ipynb`](wa-hls4ml-search/plots/generate_plots.ipynb) notebook. Be warned that the notebook loads and processes a large dataset, so generating the plots in this notebook take a while to run. Additionally, if you output the plots as PDFs, they are very large, so it is recommended to output them as PNGs instead.
-* The code used to generate the plots comparing the GNN and transformer predictions to the actual values (Fig. 13 through Fig. 18) is in [`wa-hls4ml-models/GNN/utils/plot.py`](wa-hls4ml-models/GNN/utils/plot.py) and [`wa-hls4ml-models/transformer/plot.py`](wa-hls4ml-models/transformer/plot.py).
-* The code used to generate the plot showing the distribution of labels within the train, validation, test, and exemplar datasets (Fig. 4) is available in the [`wa-hls4ml-models/notebooks/exemplar_dataset_visualization.ipynb`](wa-hls4ml-models/notebooks/exemplar_dataset_visualization.ipynb) notebook. 
-* Figures 1, 5, and 6 were generated in either Google Slides or Keynote, the files for which are included in [figures](figures/) as .pptx, .svg, and .key files as they are available (some were automatically converted, so there may be slight inaccuracies comapred to the figures in the paper), as well as the generated .pdf files used in the paper.
-
-## Using the surrogate models
-
-The current recommended method to use the surrogate models is to use the [rule4ml](https://github.com/IMPETUS-UdeS/rule4ml) python package, which as of version `0.2.0` implements a slightly updated version of the GNN model trained on the same datasets.
-
-Please see the repository linked above for code, examples, and documentation of how to use rule4ml. 
+- **Repository**: [GiuseppeDiGuglielmo/wa-hls4ml-search](https://github.com/GiuseppeDiGuglielmo/wa-hls4ml-search) (branch `Catapult-ASIC-dev`)
+- **Dataset card**: [`wa-hls4ml-search/data-cards/genesis_datacard_wa_hls4ml_asic.yaml`](wa-hls4ml-search/data-cards/genesis_datacard_wa_hls4ml_asic.yaml)
+- **README**: [`wa-hls4ml-search/README.md`](wa-hls4ml-search/README.md)
+- **Data location**: NERSC CFS `/global/cfs/cdirs/amsc011/shared/wa-hls4ml-catapult/` (access restricted pending formal release)
 
 ## Paper and Citation
 
-You may view the paper on arXiv [here](https://arxiv.org/abs/2511.05615). The paper has been accepted by ACM's Transactions on Reconfigurable Technology and Systems (TRETS) Journal for their special issue on Open Source Tools. It is currently in the process of being published, and the citation will be updated when it is available. 
-
-If you use or extend this work, citing this paper is highly encouraged and appreciated. Please use the following citation:
+ASIC-specific paper in preparation. The predecessor FPGA/Vivado work:
 
 ```bibtex
 @misc{hawks2025wahls4mlbenchmarksurrogatemodels,
-      title={wa-hls4ml: A Benchmark and Surrogate Models for hls4ml Resource and Latency Estimation}, 
+      title={wa-hls4ml: A Benchmark and Surrogate Models for hls4ml Resource and Latency Estimation},
       author={Benjamin Hawks and Jason Weitz and Dmitri Demler and Karla Tame-Narvaez and Dennis Plotnikov and Mohammad Mehdi Rahimifar and Hamza Ezzaoui Rahali and Audrey C. Therrien and Donovan Sproule and Elham E Khoda and Keegan A. Smith and Russell Marroquin and Giuseppe Di Guglielmo and Nhan Tran and Javier Duarte and Vladimir Loncar},
       year={2025},
       eprint={2511.05615},
       archivePrefix={arXiv},
       primaryClass={cs.LG},
-      url={https://arxiv.org/abs/2511.05615}, 
+      url={https://arxiv.org/abs/2511.05615},
 }
 ```
 
-## Licenses
-
-The surrogate models are available under the Creative Commons Attribution Non Commercial 4.0 license. 
-
-The original code used to train the model is copyright the original authors [Jason Weitz](https://orcid.org/0009-0004-6315-3562) and [Dmitri Demler](https://orcid.org/0009-0009-9453-9755) of [University of California San Diego](https://ucsd.edu/) available under the Apache License 2.0. The rule4ml implementation is copyright the rule4ml authors, [Hamza Ezzaoui Rahali](https://orcid.org/0000-0002-0352-725X) and [Mohammad Mehdi Rahimifar](https://orcid.org/0000-0002-6582-8322) of [Université de Sherbrooke](https://www.usherbrooke.ca/), available under the GNU General Public License v3.0. The code used to generate the dataset is copyright [Fermilab](https:www.fnal.gov), available under the Apache License 2.0.
-
-Some figures in the [`figures`](figures/) are copyright [Jason Weitz](https://orcid.org/0009-0004-6315-3562) and [Dmitri Demler](https://orcid.org/0009-0009-9453-9755) of [University of California San Diego](https://ucsd.edu/) (The figures representing the surrogate model architectures, Fig. 5 and Fig 6.). The remaining figure (The figure representing the proposed codesign workflow using wa-hls4ml, Fig. 1) is authored by [Ben Hawks](https://orcid.org/0000-0001-5700-0288) and copyright [Fermilab](https://fnal.gov), and all figures included in the directory are licensed under Creative Commons Attribution-NonCommercial 4.0 International.
-
 ## Contact
 
-This README.md was authored by [Ben Hawks](https://orcid.org/0000-0001-5700-0288) and copyright [Fermilab](https://fnal.gov). The Repository (not including submodules) is licensed under the Creative Commons Attribution-NonCommercial 4.0 International license.
+[Giuseppe Di Guglielmo](https://orcid.org/0000-0002-5749-1432), Fermi National Accelerator Laboratory — [gdg@fnal.gov](mailto:gdg@fnal.gov)
 
-If you would like to reach out with questions about the project, paper, code, or any potential collaboration or extension regarding this work, please reach out to any of the following people. 
-
-[Benjamin Hawks](https://orcid.org/0000-0001-5700-0288), Fermi National Accelerator Laboratory, USA - [bhawks@fnal.gov](mailto:bhawks@fnal.gov)
-
-[Audrey Corbeil Therrien](https://orcid.org/0000-0001-6698-8400) - University of Sherbrooke, Canada - [audrey.corbeil.therrien@usherbrooke.ca](mailto:audrey.corbeil.therrien@usherbrooke.ca)
-
-[Hamza Ezzaoui Rahali](https://orcid.org/0000-0002-0352-725X), University of Sherbrooke, Canada - [hamza.ezzaoui.rahali@usherbrooke.ca](mailto:hamza.ezzaoui.rahali@usherbrooke.ca)
-
-[Mohammad Mehdi Rahimifar](https://orcid.org/0000-0002-6582-8322), University of Sherbrooke, Canada - [mohammad.mehdi.rahimifar@usherbrooke.ca](mailto:mohammad.mehdi.rahimifar@usherbrooke.ca)
+[Benjamin Hawks](https://orcid.org/0000-0001-5700-0288), Fermi National Accelerator Laboratory — [bhawks@fnal.gov](mailto:bhawks@fnal.gov)
