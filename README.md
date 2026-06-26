@@ -1,6 +1,33 @@
 # wa-hls4ml-paper
 Code for plots, models, data generation and other utilities relating to the paper "wa-hls4ml: A Benchmark and Surrogate Models for hls4ml Resource and Latency Estimation"
 
+> **Branch `Catapult-ASIC-dev`** extends the original FPGA/Vivado work to ASIC
+> technology nodes (Nangate 45 nm and GlobalFoundries 22FDX FD-SOI) using
+> Siemens Catapult HLS. See the ASIC-specific sections below.
+
+## ASIC Surrogate Models (Catapult-ASIC-dev)
+
+Transformer and GNN surrogate models for ASIC synthesis latency and area
+estimation, trained on ~527K hls4ml/Catapult HLS designs. Code is in
+`wa-hls4ml-models/` (submodule →
+[ArghyaRanjanDas/wa_hls4ml_models](https://github.com/ArghyaRanjanDas/wa_hls4ml_models),
+branch `Catapult-ASIC-dev`).
+
+**Model card**: [`wa-hls4ml-models/model-cards/model-card_wa-hls4ml-asic-surrogate.md`](wa-hls4ml-models/model-cards/model-card_wa-hls4ml-asic-surrogate.md)
+
+## ASIC Synthesis Dataset (Catapult-ASIC-dev)
+
+~527K Siemens Catapult HLS synthesis results on Nangate 45 nm and GF22FDX.
+Dataset generation scripts are in `wa-hls4ml-search/` (submodule →
+[GiuseppeDiGuglielmo/wa-hls4ml-search](https://github.com/GiuseppeDiGuglielmo/wa-hls4ml-search),
+branch `Catapult-ASIC-dev`). Data is hosted on NERSC CFS
+(`/global/cfs/cdirs/amsc011/shared/wa-hls4ml-catapult/`); access is
+restricted pending formal release.
+
+**Dataset card**: [`wa-hls4ml-search/data-cards/genesis_datacard_wa_hls4ml_asic.yaml`](wa-hls4ml-search/data-cards/genesis_datacard_wa_hls4ml_asic.yaml)
+
+---
+
 ## Using this repo
 
 This repo uses git submodules. To use this repo, you need to initialize and update the submodules using the following command in the root of the repository after cloning it:
