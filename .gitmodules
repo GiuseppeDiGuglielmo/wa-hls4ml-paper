@@ -6,3 +6,6 @@
 	path = wa-hls4ml-search
 	url = git@github.com:GiuseppeDiGuglielmo/wa-hls4ml-search.git
 	branch = Catapult-ASIC-dev
+[submodule "hls4ml-asic-surrogate-fastml-2026"]
+	path = hls4ml-asic-surrogate-fastml-2026
+	url = git@github.com:GiuseppeDiGuglielmo/hls4ml-asic-surrogate-fastml-2026.git
